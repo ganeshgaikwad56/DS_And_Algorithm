@@ -2,33 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace DSAndAlgorithm
+namespace InsertionSort
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the Algorithm Programs");
-            Console.WriteLine("\n1.Permutation Using Recursion");
-            Console.WriteLine("Enter the option");
-            int num = Convert.ToInt32(Console.ReadLine());
-            switch (num)
+            int[] array = new int[5] { 40, 57, 20, 9, 8 };
+            int k;
+            int temp;
+            for (int i = 0; i < array.Length; i++)
             {
-                case 1:
-                    Console.WriteLine("Enter String to find Permutation ");
-                    string str = Console.ReadLine();
-                    int n = str.Length;
-                    Permutation.Permutate(str, 0, n - 1);
-                    break;
-
-                default:
-                    Console.WriteLine("Enter the valid option!");
-                    break;
+                k = i - 1;
+                while (k >= 0 && array[k] > array[k + 1])
+                {
+                    temp = array[k];
+                    array[k] = array[k + 1];
+                    array[k + 1] = temp;
+                    k = k - 1;
+                }
             }
-            Console.WriteLine("\nDo you want to continue");
-            Console.ReadLine();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine(array[i]);
+            }
         }
     }
 }
